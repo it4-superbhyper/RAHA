@@ -800,11 +800,27 @@ p { text-wrap: pretty; }
   background: var(--navy-900);
   overflow: hidden;
 }
-/* Clean gradient backdrop — no stock photography, just a diagonal navy wash
-   with the drifting radial glow defined in motion.css (.hero::after). */
+/* Clean gradient backdrop — a diagonal navy wash, with faint product
+   silhouettes (.hero__art) and a drifting radial glow (motion.css,
+   .hero::after) layered on top for texture, instead of a literal photo. */
 .hero::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(115deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+}
+
+.hero__art { position: absolute; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.hero__art-img {
+  position: absolute;
+  opacity: .05;
+  filter: grayscale(1) brightness(1.8) blur(1.5px);
+  object-fit: contain;
+}
+.hero__art-img--1 { width: clamp(240px, 24vw, 380px); top: -8%; right: 2%; }
+.hero__art-img--2 { width: clamp(200px, 19vw, 300px); bottom: -12%; right: 26%; }
+.hero__art-img--3 { width: clamp(180px, 17vw, 260px); bottom: 4%; right: 4%; }
+@media (max-width: 640px) {
+  .hero__art-img--2, .hero__art-img--3 { display: none; }
+  .hero__art-img--1 { opacity: .05; width: 60vw; top: -10%; right: -10%; }
 }
 
 .hero__inner { padding-block: clamp(3.5rem, 9vw, 6rem); max-width: 640px; }

@@ -172,6 +172,25 @@
    6. Hero
    -------------------------------------------------------------------------- */
 
+/* Faint product silhouettes, each drifting on its own slow, independent
+   loop so the trio never appears synchronised. */
+.hero__art-img--1 { animation: rahaArtDrift1 34s ease-in-out infinite alternate; }
+.hero__art-img--2 { animation: rahaArtDrift2 41s ease-in-out infinite alternate; }
+.hero__art-img--3 { animation: rahaArtDrift3 27s ease-in-out infinite alternate; }
+
+@keyframes rahaArtDrift1 {
+  from { transform: translate3d(0, -2%, 0) rotate(-2deg); }
+  to   { transform: translate3d(-3%, 3%, 0) rotate(1deg); }
+}
+@keyframes rahaArtDrift2 {
+  from { transform: translate3d(2%, 0, 0) rotate(1.5deg); }
+  to   { transform: translate3d(-2%, -4%, 0) rotate(-1deg); }
+}
+@keyframes rahaArtDrift3 {
+  from { transform: translate3d(-2%, 3%, 0) scale(1); }
+  to   { transform: translate3d(3%, -2%, 0) scale(1.05); }
+}
+
 /* Slow-drifting light, layered above the gradient and below the copy. */
 .hero::after {
   content: '';
