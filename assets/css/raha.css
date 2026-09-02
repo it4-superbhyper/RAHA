@@ -1166,6 +1166,7 @@ p { text-wrap: pretty; }
 .topbar__social a i {
   display: block;
   width: 1em;
+  height: 1em;
   line-height: 1;
   text-align: center;
 }
@@ -1194,18 +1195,21 @@ p { text-wrap: pretty; }
   position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 880;
   display: flex; flex-direction: column-reverse; gap: .6rem; align-items: center;
 }
-.fab {
+/* Note: this component is deliberately named `.fab-btn`, not `.fab` — Font
+   Awesome's brand-icon class is literally `.fab`, and reusing it here used
+   to hijack every `<i class="fab fa-...">` brand glyph's box model. */
+.fab-btn {
   width: 48px; height: 48px; display: grid; place-items: center;
   border-radius: var(--r-pill);
   box-shadow: var(--shadow-md);
   transition: transform var(--t-base), box-shadow var(--t-base), opacity var(--t-base);
 }
-.fab:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-.fab--wa { background: #25d366; color: #fff; font-size: 1.4rem; }
-.fab--wa:hover { color: #fff; }
-.fab--top { background: #fff; color: var(--navy-700); border: 1px solid var(--line); font-size: .85rem; }
-.fab--top { opacity: 0; pointer-events: none; }
-.fab--top.is-on { opacity: 1; pointer-events: auto; }
+.fab-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.fab-btn--wa { background: #25d366; color: #fff; font-size: 1.4rem; }
+.fab-btn--wa:hover { color: #fff; }
+.fab-btn--top { background: #fff; color: var(--navy-700); border: 1px solid var(--line); font-size: .85rem; }
+.fab-btn--top { opacity: 0; pointer-events: none; }
+.fab-btn--top.is-on { opacity: 1; pointer-events: auto; }
 
 /* --------------------------------------------------------------------------
    17. Scroll reveal

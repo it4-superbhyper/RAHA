@@ -135,7 +135,7 @@
   (function magnetic() {
     if (!wantsMotion() || !hasFinePointer()) return;
 
-    var MAGNETIC = '.hero__cta .btn, .cta-band__btns .btn, .fab';
+    var MAGNETIC = '.hero__cta .btn, .cta-band__btns .btn, .fab-btn';
     var targets = Array.prototype.slice.call(document.querySelectorAll(MAGNETIC));
     if (!targets.length) return;
 

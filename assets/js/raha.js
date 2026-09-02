@@ -10,7 +10,7 @@
 
   /* ---- Sticky header shadow ---------------------------------------------- */
   var header = document.querySelector('.site-header');
-  var toTop = document.querySelector('.fab--top');
+  var toTop = document.querySelector('.fab-btn--top');
 
   function onScroll() {
     var y = window.scrollY;
