@@ -172,39 +172,24 @@
    6. Hero
    -------------------------------------------------------------------------- */
 
-/* Faint product silhouettes, each drifting on its own slow, independent
-   loop so the trio never appears synchronised. */
-.hero__art-img--1 { animation: rahaArtDrift1 34s ease-in-out infinite alternate; }
-.hero__art-img--2 { animation: rahaArtDrift2 41s ease-in-out infinite alternate; }
-.hero__art-img--3 { animation: rahaArtDrift3 27s ease-in-out infinite alternate; }
+/* Soft colour blobs drifting slowly and independently, blended into the
+   navy gradient via mix-blend-mode (see raha.css .hero__glow-blob) —
+   light that belongs to the palette, not imagery. */
+.hero__glow-blob--1 { animation: rahaGlow1 30s ease-in-out infinite alternate; }
+.hero__glow-blob--2 { animation: rahaGlow2 38s ease-in-out infinite alternate; }
+.hero__glow-blob--3 { animation: rahaGlow3 24s ease-in-out infinite alternate; }
 
-@keyframes rahaArtDrift1 {
-  from { transform: translate3d(0, -2%, 0) rotate(-2deg); }
-  to   { transform: translate3d(-3%, 3%, 0) rotate(1deg); }
+@keyframes rahaGlow1 {
+  from { transform: translate3d(0, -4%, 0) scale(1); }
+  to   { transform: translate3d(-6%, 5%, 0) scale(1.12); }
 }
-@keyframes rahaArtDrift2 {
-  from { transform: translate3d(2%, 0, 0) rotate(1.5deg); }
-  to   { transform: translate3d(-2%, -4%, 0) rotate(-1deg); }
+@keyframes rahaGlow2 {
+  from { transform: translate3d(3%, 2%, 0) scale(1); }
+  to   { transform: translate3d(-4%, -6%, 0) scale(1.1); }
 }
-@keyframes rahaArtDrift3 {
-  from { transform: translate3d(-2%, 3%, 0) scale(1); }
-  to   { transform: translate3d(3%, -2%, 0) scale(1.05); }
-}
-
-/* Slow-drifting light, layered above the gradient and below the copy. */
-.hero::after {
-  content: '';
-  position: absolute; inset: -20%; z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(38% 46% at 22% 28%, rgba(217, 169, 58, .22), transparent 65%),
-    radial-gradient(42% 48% at 78% 72%, rgba(36, 99, 171, .30), transparent 68%);
-  animation: rahaDrift 22s ease-in-out infinite alternate;
-}
-
-@keyframes rahaDrift {
-  from { transform: translate3d(-3%, -2%, 0) scale(1); }
-  to   { transform: translate3d(4%, 3%, 0) scale(1.12); }
+@keyframes rahaGlow3 {
+  from { transform: translate3d(-4%, 4%, 0) scale(1); }
+  to   { transform: translate3d(5%, -3%, 0) scale(1.15); }
 }
 
 .hero__inner > * { animation: rahaHeroIn .95s var(--ease-out) backwards; }
@@ -408,7 +393,7 @@
   .p-card.tilt, .cat-tile.tilt, .card.tilt, .split__media.tilt,
   [data-magnetic] { transform: none !important; }
 
-  .hero::after,
+  .hero__glow-blob,
   .split__badge,
   .cta-band::before,
   .fab-btn--wa::before,
