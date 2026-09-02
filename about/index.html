@@ -1,880 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-ZA">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="language" content="en-ZA" />
-  
-  <!-- Primary Meta Tags -->
-  <title>RAHA | About Us</title>
-  <meta name="description" content="Learn about RAHA: South Africa's trusted house brand for household essentials. Founded in 2023, proudly manufactured in KZN, supporting local communities with eco-conscious products.">
-  <meta name="keywords" content="RAHA, about us, South African brand, household essentials, eco-conscious, KZN manufacturing, local business, sustainable home care">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b72">
+
+  <title>About RAHA | A South African House Brand</title>
+  <meta name="description" content="RAHA is a South African house brand built on three aisles — spring water, pantry staples and household disposables. Singles, multipacks and full trade cases, delivered nationwide.">
+  <meta name="keywords" content="about RAHA, South African house brand, spring water, pantry staples, household disposables, local brand">
   <meta name="author" content="RAHA Brands (Pty) Ltd">
   <meta name="robots" content="index, follow">
-  
-  <!-- Open Graph / Facebook -->
+
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.raha.co.za/about/  ">
-  <meta property="og:title" content="RAHA | About Us">
-  <meta property="og:description" content="Learn about RAHA: South Africa's trusted house brand for household essentials. Founded in 2023, proudly manufactured in KZN, supporting local communities with eco-conscious products.">
-  <meta property="og:image" content="https://www.raha.co.za/og-about.jpg  ">
+  <meta property="og:url" content="https://www.raha.co.za/about/">
+  <meta property="og:title" content="About RAHA | A South African House Brand">
+  <meta property="og:description" content="Three aisles, one trusted brand — proudly South African, delivered nationwide.">
+  <meta property="og:image" content="https://www.raha.co.za/og-image.jpg">
   <meta property="og:site_name" content="RAHA">
-  
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://www.raha.co.za/about/  ">
-  <meta name="twitter:title" content="RAHA | About Us">
-  <meta name="twitter:description" content="Learn about RAHA: South Africa's trusted house brand for household essentials. Founded in 2023, proudly manufactured in KZN, supporting local communities with eco-conscious products.">
-  <meta name="twitter:image" content="https://www.raha.co.za/og-about.jpg  ">
-  
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  
-  <!-- Preload Critical Assets -->
-  <link rel="preload" href="../logo.jpeg" as="image">
-  
-  <!-- DNS Prefetch -->
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com  ">
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com  ">
-  
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css  "/>
-  <link rel="preconnect" href="https://fonts.googleapis.com  ">
-  <link rel="preconnect" href="https://fonts.gstatic.com  " crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter  :wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://www.raha.co.za/about/  ">
+  <meta name="twitter:title" content="About RAHA">
+  <meta name="twitter:description" content="Three aisles, one trusted brand — proudly South African, delivered nationwide.">
 
-  <style>
-    :root {
-      --navy: #0F3D7A;
-      --navy-dark: #0a2d5e;
-      --navy-light: #1a4d8f;
-      --gold: #D4AF37;
-      --gold-dark: #b8942c;
-      --green: #00A651;
-      --green-light: #00C464;
-      --white: #FFFFFF;
-      --light-gray: #F8F9FA;
-      --lighter-gray: #FAFBFC;
-      --dark-gray: #1a1a1a;
-      --medium-gray: #6B7280;
-      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-      --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-    }
+  <link rel="canonical" href="https://www.raha.co.za/about/">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-    }
-    
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      color: var(--dark-gray);
-      background: var(--white);
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    
-    h1, h2, h3, h4 { 
-      font-weight: 800; 
-      color: var(--navy);
-      letter-spacing: -0.02em;
-    }
-    
-    p { 
-      margin-bottom: 1rem;
-      color: var(--medium-gray);
-      font-weight: 400;
-    }
-    
-    a { 
-      text-decoration: none; 
-      color: var(--navy); 
-      transition: var(--transition-base); 
-    }
-    
-    a:hover { 
-      color: var(--gold); 
-    }
-
-    .container { 
-      width: 100%; 
-      max-width: 1280px; 
-      margin: 0 auto; 
-      padding: 0 2rem; 
-    }
-
-    /* HEADER */
-    header {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(15, 61, 122, 0.08);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: var(--transition-base);
-    }
-    
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-    
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .logo a {
-      display: block;
-    }
-    
-    .logo img {
-      height: 52px;
-      transition: var(--transition-smooth);
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
-    }
-    
-    .logo a:hover img {
-      transform: scale(1.05);
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-    }
-    
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 2.5rem;
-      align-items: center;
-    }
-    
-    nav a {
-      font-weight: 600;
-      font-size: 0.95rem;
-      position: relative;
-      padding: 0.5rem 0;
-      letter-spacing: -0.01em;
-    }
-    
-    nav a::after {
-      content: ''; 
-      position: absolute; 
-      bottom: 0; 
-      left: 50%; 
-      transform: translateX(-50%);
-      width: 0; 
-      height: 2px; 
-      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
-      border-radius: 2px;
-      transition: var(--transition-base);
-    }
-    
-    nav a:hover::after { 
-      width: 100%; 
-    }
-
-    /* HAMBURGER */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 0.35rem;
-      cursor: pointer;
-      padding: 0.5rem;
-    }
-    
-    .bar {
-      width: 26px;
-      height: 2.5px;
-      background: var(--navy);
-      border-radius: 2px;
-      transition: var(--transition-smooth);
-    }
-    
-    .hamburger.active .bar:nth-child(2) { 
-      opacity: 0; 
-    }
-    
-    .hamburger.active .bar:nth-child(1) {
-      transform: translateY(9px) rotate(45deg);
-    }
-    
-    .hamburger.active .bar:nth-child(3) {
-      transform: translateY(-9px) rotate(-45deg);
-    }
-
-    /* MOBILE NAV */
-    .mobile-nav {
-      position: fixed;
-      top: 70px;
-      left: -100%;
-      width: 100%;
-      background: var(--white);
-      transition: var(--transition-smooth);
-      z-index: 999;
-      overflow-y: auto;
-    }
-    
-    .mobile-nav.active {
-      left: 0;
-    }
-    
-    .mobile-nav ul {
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1.5rem;
-      gap: 0;
-    }
-    
-    .mobile-nav a {
-      font-size: 1.25rem;
-      font-weight: 600;
-      padding: 1.25rem 0;
-      border-bottom: 1px solid rgba(15, 61, 122, 0.08);
-      transition: var(--transition-base);
-    }
-    
-    .mobile-nav a:hover {
-      padding-left: 1rem;
-      color: var(--gold);
-    }
-    
-    .mobile-nav a:last-child {
-      border-bottom: none;
-    }
-
-    /* OVERLAY */
-    .overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.35);
-      z-index: 998;
-    }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      height: 100vh;
-      min-height: 700px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-    
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(135deg, rgba(15, 61, 122, 0.85) 0%, rgba(15, 61, 122, 0.65) 50%, rgba(0, 166, 81, 0.55) 100%);
-      z-index: 1;
-    }
-    
-    .hero-slides {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      transform: scale(1.05);
-    }
-    
-    .slide.active {
-      opacity: 1;
-      animation: slowZoom 10s ease-out forwards;
-    }
-    
-    @keyframes slowZoom {
-      from { transform: scale(1.05); }
-      to { transform: scale(1); }
-    }
-    
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 900px;
-      padding: 3.5rem;
-      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
-    }
-    
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .hero-content h1 {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-      color: var(--navy);
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-    }
-    
-    .hero-content h1 span {
-      color: var(--gold);
-    }
-    
-    .hero-content p {
-      font-size: 1.4rem;
-      max-width: 750px;
-      margin: 0 auto 2.5rem;
-      color: var(--dark-gray);
-      opacity: 0.95;
-      font-weight: 400;
-      line-height: 1.7;
-    }
-
-    /* SECTION STYLING */
-    .section { 
-      padding: 7rem 0; 
-    }
-    
-    .mission { 
-      background: linear-gradient(180deg, var(--lighter-gray) 0%, var(--white) 100%);
-    }
-
-    /* SECTION TITLE */
-    .section-title {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--navy);
-      text-align: center;
-      margin-bottom: 4rem;
-      position: relative;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-    }
-    
-    .section-title::after {
-      content: '';
-      position: absolute;
-      bottom: -20px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100px;
-      height: 5px;
-      background: linear-gradient(90deg, var(--gold), var(--gold-dark));
-      border-radius: 10px;
-    }
-
-    /* VALUES GRID */
-    .values-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      justify-items: center;
-    }
-
-    .value-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      padding: 3rem 2.5rem;
-      box-shadow: var(--shadow-lg);
-      text-align: center;
-      transition: var(--transition-smooth);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: slideUp 0.8s forwards;
-      border: 1px solid rgba(15, 61, 122, 0.05);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .value-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--navy), var(--green));
-      transform: scaleX(0);
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    
-    .value-card:hover::before {
-      transform: scaleX(1);
-    }
-    
-    .value-card:nth-child(1) { animation-delay: 0.2s; }
-    .value-card:nth-child(2) { animation-delay: 0.4s; }
-    .value-card:nth-child(3) { animation-delay: 0.6s; }
-    
-    @keyframes slideUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .value-card:hover {
-      transform: translateY(-12px);
-      box-shadow: var(--shadow-2xl);
-    }
-    
-    .value-icon {
-      width: 90px;
-      height: 90px;
-      background: linear-gradient(135deg, var(--navy), var(--navy-light));
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.5rem;
-      margin: 0 auto 2rem;
-      transition: var(--transition-smooth);
-      box-shadow: 0 8px 20px rgba(15, 61, 122, 0.2);
-    }
-    
-    .value-card:hover .value-icon {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 12px 28px rgba(15, 61, 122, 0.3);
-    }
-    
-    .value-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: 700;
-    }
-    
-    .value-card p {
-      font-size: 1rem;
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    /* TEAM & IMPACT */
-    .team-section {
-      background: var(--white);
-      padding: 5rem 0;
-    }
-    
-    .team-container {
-      max-width: 900px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    
-    .team-container h3 {
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-    }
-    
-    .stats-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 3rem;
-    }
-    
-    .stat-item {
-      text-align: center;
-    }
-    
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 0.5rem;
-    }
-    
-    .stat-label {
-      font-size: 1rem;
-      color: var(--medium-gray);
-    }
-
-    /* FACTORY SHOWCASE */
-    .factory-section {
-      background: var(--light-gray);
-      padding: 6rem 0;
-    }
-    
-    .factory-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 3rem;
-      align-items: center;
-    }
-    
-    .factory-image {
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-xl);
-      height: 350px;
-      background: linear-gradient(135deg, #e6f2ff 0%, #d4e8ff 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    
-    .factory-image::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.5s;
-    }
-    
-    .factory-image:hover::before {
-      opacity: 1;
-    }
-    
-    .factory-image img {
-      max-width: 90%;
-      max-height: 90%;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12));
-    }
-    
-    .factory-info h3 {
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      font-size: 1.8rem;
-    }
-    
-    .factory-info p {
-      font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.75;
-    }
-    
-    .process-steps {
-      list-style: none;
-      margin-top: 2rem;
-    }
-    
-    .process-step {
-      padding: 1rem 0;
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    
-    .step-icon {
-      width: 32px;
-      height: 32px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 0.2rem;
-    }
-
-    /* COMMUNITY INITIATIVES */
-    .community-section {
-      background: var(--white);
-      padding: 6rem 0;
-    }
-    
-    .initiative-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-    }
-    
-    .initiative-card {
-      background: var(--lighter-gray);
-      border-radius: var(--radius-lg);
-      padding: 2.5rem;
-      text-align: center;
-      box-shadow: var(--shadow-md);
-      transition: var(--transition-base);
-    }
-    
-    .initiative-card:hover {
-      transform: translateY(-8px);
-      box-shadow: var(--shadow-xl);
-    }
-    
-    .initiative-icon {
-      width: 72px;
-      height: 72px;
-      background: linear-gradient(135deg, var(--green), var(--green-light));
-      color: var(--white);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      margin: 0 auto 1.5rem;
-    }
-    
-    .initiative-card h3 {
-      margin-bottom: 1rem;
-      color: var(--navy);
-    }
-
-    /* FOOTER */
-    footer {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
-      color: var(--white);
-      padding: 5rem 0 2rem;
-      position: relative;
-    }
-    
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    }
-    
-    .footer-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    
-    .footer-logo {
-      margin-bottom: 1.5rem;
-    }
-    
-    .footer-logo img {
-      height: 48px;
-      filter: brightness(1.1);
-    }
-    
-    .copyright {
-      font-size: 0.9rem;
-      opacity: 0.7;
-      margin-top: 1.5rem;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .container {
-        padding: 0 1.5rem;
-      }
-      
-      .header-inner {
-        padding: 0.75rem 1.5rem;
-      }
-      
-      .hamburger {
-        display: flex;
-      }
-      
-      nav ul {
-        display: none;
-      }
-      
-      .hero {
-        min-height: 600px;
-        padding: 0 1rem;
-      }
-      
-      .hero-content {
-        padding: 2.5rem 1.75rem;
-        background: rgba(255, 255, 255, 0.12);
-      }
-      
-      .hero-content h1 {
-        font-size: 2.8rem;
-      }
-      
-      .hero-content p {
-        font-size: 1.15rem;
-      }
-      
-      .section {
-        padding: 4.5rem 0;
-      }
-      
-      .section-title {
-        font-size: 2.25rem;
-        margin-bottom: 3rem;
-      }
-      
-      .values-grid,
-      .stats-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      
-      .factory-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      
-      .factory-image {
-        height: 280px;
-      }
-      
-      .initiative-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-    }
-
-    /* PERFORMANCE */
-    .value-card,
-    .initiative-card,
-    .factory-image,
-    .btn,
-    .social-links a {
-      will-change: transform;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-    }
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../assets/css/raha.css">
+  <link rel="stylesheet" href="../assets/css/motion.css">
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header id="header" role="banner">
-    <div class="container header-inner">
-      <div class="logo">
-        <a href="/home/" aria-label="RAHA Home">
-          <img src="../logo.jpeg" alt="RAHA Logo" loading="lazy">
-        </a>
-      </div>
-      <nav role="navigation" aria-label="Main navigation">
-        <ul>
-          <li><a href="/home/">Home</a></li>
-          <li><a href="/product/">Products</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/contact/">Contact</a></li>
-        </ul>
-        <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </button>
-      </nav>
-    </div>
+<a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- MOBILE NAV -->
-    <div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile navigation">
-      <ul>
-        <li><a href="/home/">Home</a></li>
-        <li><a href="/product/">Products</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/contact/">Contact</a></li>
+<div class="topbar">
+  <div class="shell topbar__inner">
+    <ul class="topbar__list">
+      <li><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+27325431234">+27 32 543 1234</a></li>
+      <li><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:info@raha.co.za">info@raha.co.za</a></li>
+    </ul>
+    <ul class="topbar__social" aria-label="RAHA on social media">
+      <li><a href="https://www.instagram.com/Raha_brands" target="_blank" rel="noopener" aria-label="RAHA on Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+      <li><a href="https://wa.me/27325431234" target="_blank" rel="noopener" aria-label="RAHA on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <a class="brand" href="../home/" aria-label="RAHA — home">
+      <img src="../logo.jpeg" alt="RAHA" width="160" height="42">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="../home/">Home</a></li>
+        <li><a class="nav__link" href="../product/">Products</a></li>
+        <li><a class="nav__link" href="../about/" aria-current="page">About</a></li>
+        <li><a class="nav__link" href="../contact/">Contact</a></li>
       </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn--primary btn--sm btn--desktop" href="../contact/"><i class="fas fa-headset" aria-hidden="true"></i> Trade enquiries</a>
+      <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+</header>
 
-    <!-- OVERLAY -->
-    <div class="overlay" id="navOverlay" aria-hidden="true"></div>
-  </header>
+<div class="mobile-nav" id="mobileNav">
+  <a class="mobile-nav__link" href="../home/">Home <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+  <a class="mobile-nav__link" href="../product/">Products <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+  <a class="mobile-nav__link" href="../about/" aria-current="page">About <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+  <a class="mobile-nav__link" href="../contact/">Contact <i class="fas fa-chevron-right" aria-hidden="true"></i></a>
+  <a class="btn btn--primary btn--block" href="../contact/"><i class="fas fa-headset" aria-hidden="true"></i> Trade enquiries</a>
+</div>
+<div class="scrim" id="scrim"></div>
 
-  <!-- HERO -->
-  <section class="hero" aria-label="RAHA about page banner" role="region">
-    <div class="container hero-content">
-      <h1>More Than Just a Brand-<br><span>A Household Promise</span></h1>
-      <p>RAHA is South Africa’s answer to modern home care — a house brand that combines performance, sustainability, and local pride into every essential.</p>
+<main id="main">
+
+  <!-- ══ PAGE HERO ══ -->
+  <section class="page-hero">
+    <div class="shell">
+      <nav aria-label="Breadcrumb">
+        <ol class="crumbs">
+          <li><a href="../home/">Home</a></li>
+          <li>About</li>
+        </ol>
+      </nav>
+      <h1 class="display">A house brand,<br>built the honest way.</h1>
+      <p class="lead measure">RAHA exists to do one thing well: put dependable everyday products on South African shelves at a price that makes sense — and to keep them there, case after case.</p>
+
+      <div class="hero-facts">
+        <span class="hero-fact"><i class="fas fa-boxes-stacked" aria-hidden="true"></i> Singles, multipacks &amp; cases</span>
+        <span class="hero-fact"><i class="fas fa-layer-group" aria-hidden="true"></i> Three product categories</span>
+        <span class="hero-fact"><i class="fas fa-recycle" aria-hidden="true"></i> Recyclable packaging</span>
+      </div>
     </div>
   </section>
 
-  <!-- MISSION & VALUES -->
-  <section class="section mission" role="region" aria-labelledby="mission-heading">
-    <div class="container">
-      <h2 id="mission-heading" class="section-title">Our Mission & Values</h2>
-      <div class="values-grid">
-        <div class="value-card" role="article" aria-labelledby="value1-title">
-          <div class="value-icon" aria-hidden="true"><i class="fas fa-home"></i></div>
-          <h3 id="value1-title">Household First</h3>
-          <p>We design for real South African homes — balancing performance, safety, and value without compromise.</p>
-        </div>
-        <div class="value-card" role="article" aria-labelledby="value2-title">
-          <div class="value-icon" aria-hidden="true"><i class="fas fa-leaf"></i></div>
-          <h3 id="value2-title">Eco-Conscious</h3>
-          <p>Biodegradable formulas, plant-based ingredients, and packaging made from recycled materials.</p>
-        </div>
-        <div class="value-card" role="article" aria-labelledby="value3-title">
-          <div class="value-icon" aria-hidden="true"><i class="fas fa-globe-africa"></i></div>
-          <h3 id="value3-title">Proudly Local</h3>
-          <p>Manufactured in KZN, supporting local jobs and communities since day one.</p>
-        </div>
+  <!-- ══ INTRO SPLIT ══ -->
+  <section class="section">
+    <div class="shell split">
+      <div class="reveal reveal--left">
+        <span class="eyebrow">Our approach</span>
+        <h2 class="h2" style="margin:1rem 0">One supplier for<br>the whole basket</h2>
+        <p class="lead">Most households do not shop by category. They buy the water, the beans, the kitchen towel and the bin bags in the same trip — so we built a brand that covers all of it.</p>
+        <p>That means a retailer can stock three aisles from a single supplier, on one invoice and one delivery. And it means a shopper who trusts the RAHA water has a reason to trust the RAHA towel next to it.</p>
+
+        <ul class="check-list" style="margin-top:1.25rem">
+          <li><i class="fas fa-check" aria-hidden="true"></i> Consistent quality standards applied across every category</li>
+          <li><i class="fas fa-check" aria-hidden="true"></i> Packaging designed to be recognised from across the aisle</li>
+          <li><i class="fas fa-check" aria-hidden="true"></i> Trade formats that palletise, stack and stock-take cleanly</li>
+        </ul>
       </div>
 
-      <div class="team-section">
-        <div class="team-container">
-          <h3>Impact That Matters</h3>
-          <p>Every purchase supports local communities and environmental initiatives across South Africa.</p>
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number">500+</div>
-              <div class="stat-label">Local Jobs Supported</div>
+      <div class="split__media reveal reveal--right" data-delay="1">
+        <img src="../pic2.jpg" alt="Spring water being poured into a glass" loading="lazy">
+        <span class="split__badge"><i class="fas fa-droplet" aria-hidden="true"></i> Natural spring water</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ VALUES ══ -->
+  <section class="section section--tint section--dotted">
+    <div class="shell">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">What we stand for</span>
+        <h2 class="h2">Three things we will not trade away</h2>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card card--raise feature-card reveal reveal--flip">
+          <span class="feature-card__index" aria-hidden="true">01</span>
+          <div class="icon-badge"><i class="fas fa-house" aria-hidden="true"></i></div>
+          <h3>Household first</h3>
+          <p>Every decision starts with the person paying at the till. Sizes, formats and formulas are chosen for real budgets and real kitchens — not for a marketing deck.</p>
+        </div>
+
+        <div class="card card--raise feature-card reveal reveal--flip" data-delay="1">
+          <span class="feature-card__index" aria-hidden="true">02</span>
+          <div class="icon-badge icon-badge--gold"><i class="fas fa-recycle" aria-hidden="true"></i></div>
+          <h3>Packaging that can come back</h3>
+          <p>PET bottles, steel cans and paper products across the range are chosen so the packaging can be recovered and recycled rather than simply thrown away.</p>
+        </div>
+
+        <div class="card card--raise feature-card reveal reveal--flip" data-delay="2">
+          <span class="feature-card__index" aria-hidden="true">03</span>
+          <div class="icon-badge"><i class="fas fa-globe-africa" aria-hidden="true"></i></div>
+          <h3>South African first</h3>
+          <p>We favour South African suppliers wherever the quality and the timing allow it, and we build the range around what local households actually buy.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RANGE + PROCESS ══ -->
+  <section class="section">
+    <div class="shell split">
+      <div class="reveal reveal--left">
+        <span class="eyebrow">How it reaches you</span>
+        <h2 class="h2" style="margin:1rem 0">From source to shelf</h2>
+        <p>Nothing exotic — just a short, well-controlled chain with checks at each handover. It is the reason a case ordered in March looks and tastes exactly like a case ordered in November.</p>
+
+        <ol class="process-list" style="margin-top:1.5rem">
+          <li><div><strong>Source &amp; supply</strong><span>Spring water drawn at source; food and household inputs bought to a fixed specification.</span></div></li>
+          <li><div><strong>Fill &amp; pack</strong><span>Bottling, canning and packing under batch control, with tamper-evident closures on every bottle.</span></div></li>
+          <li><div><strong>Batch checks</strong><span>Each batch is checked and recorded before it is released to the warehouse.</span></div></li>
+          <li><div><strong>Case &amp; palletise</strong><span>Singles, six-packs and full cases built to stack squarely and survive the road.</span></div></li>
+          <li><div><strong>Distribute</strong><span>Out to wholesalers, retailers and food-service customers nationwide.</span></div></li>
+        </ol>
+      </div>
+
+      <div class="reveal reveal--right" data-delay="1">
+        <div class="card">
+          <span class="eyebrow">Milestones</span>
+          <div class="timeline" style="margin-top:1.75rem">
+            <div class="timeline__item">
+              <span class="timeline__year">The start</span>
+              <h3>One product, one province</h3>
+              <p>RAHA launches as a house brand with a single household line and a short list of local stockists.</p>
             </div>
-            <div class="stat-item">
-              <div class="stat-number">2M+</div>
-              <div class="stat-label">Homes Served</div>
+            <div class="timeline__item">
+              <span class="timeline__year">Water</span>
+              <h3>Still and sparkling spring water</h3>
+              <p>The water range arrives in 330 ml and 500 ml, with six-packs and 24-bottle trade cases following.</p>
             </div>
-            <div class="stat-item">
-              <div class="stat-number">98%</div>
-              <div class="stat-label">Customer Satisfaction</div>
+            <div class="timeline__item">
+              <span class="timeline__year">Pantry</span>
+              <h3>Food and disposables added</h3>
+              <p>Choice-grade baked beans, refuse bags, bags on a roll and jumbo kitchen towels widen the basket.</p>
+            </div>
+            <div class="timeline__item">
+              <span class="timeline__year">Today</span>
+              <h3>Thirteen formats, three aisles</h3>
+              <p>A single supplier relationship that covers water, food and household disposables nationwide.</p>
             </div>
           </div>
         </div>
@@ -882,136 +207,136 @@
     </div>
   </section>
 
-  <!-- FACTORY & PROCESS -->
-  <section class="factory-section" role="region" aria-labelledby="factory-heading">
-    <div class="container">
-      <h2 id="factory-heading" class="section-title">Made in South Africa</h2>
-      <div class="factory-grid">
-        <div class="factory-image">
-          <img src="../factory.jpg" onerror="this.src='https://themanufacturer-cdn-1.s3.eu-west-2.amazonaws.com/wp-content/uploads/2017/11/14122657/harrisson.jpg'" alt="RAHA Manufacturing Facility in KZN" loading="lazy">
+  <!-- ══ RANGE STRIP ══ -->
+  <section class="section section--tint section--rule">
+    <div class="shell">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">The range today</span>
+        <h2 class="h2">Three aisles under one brand</h2>
+        <p class="lead measure mx-auto">Explore the full catalogue — every line is listed with its pack format, dimensions and case quantity.</p>
+      </div>
+
+      <div class="cat-grid">
+        <a class="cat-tile reveal" href="../product/">
+          <div class="cat-tile__media"><img src="../image/Raha-Sparkling-Water-500ml-1-medium.jpg" alt="RAHA Sparkling Spring Water 500 ml bottle" loading="lazy" width="600" height="600"></div>
+          <div class="cat-tile__body"><h3>Spring Water</h3><p>Still &amp; sparkling</p><span>8 formats <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+        </a>
+        <a class="cat-tile reveal" data-delay="1" href="../product/">
+          <div class="cat-tile__media"><img src="../image/Raha-Baked-Beans-In-Tomato-Sauce-12x400gr-medium.jpg" alt="RAHA Baked Beans case of twelve 400 g cans" loading="lazy" width="600" height="600"></div>
+          <div class="cat-tile__body"><h3>Pantry &amp; Food</h3><p>Choice-grade baked beans</p><span>2 formats <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+        </a>
+        <a class="cat-tile reveal" data-delay="2" href="../product/">
+          <div class="cat-tile__media"><img src="../image/Raha-Bag-On-Roll-25x40-500-Bags.webp" alt="RAHA Bag on Roll, 500 bags" loading="lazy" width="600" height="600"></div>
+          <div class="cat-tile__body"><h3>Disposables &amp; Paper</h3><p>Bags, rolls &amp; towels</p><span>3 formats <i class="fas fa-arrow-right" aria-hidden="true"></i></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ COMMUNITY ══ -->
+  <section class="section">
+    <div class="shell">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">In the community</span>
+        <h2 class="h2">Where our attention goes</h2>
+        <p class="lead measure mx-auto">Small, practical commitments we can actually keep — close to where we operate.</p>
+      </div>
+
+      <div class="grid grid--3">
+        <div class="card card--raise reveal reveal--scale">
+          <div class="icon-badge icon-badge--round"><i class="fas fa-droplet" aria-hidden="true"></i></div>
+          <h3 class="h3">Water where it is short</h3>
+          <p>Product donations to community and disaster-relief efforts when local water supply is disrupted.</p>
         </div>
-        <div class="factory-info">
-          <h3>Our Process</h3>
-          <p>Located in Stanger, KZN, our state-of-the-art facility operates under the strictest quality standards. From raw material sourcing to final packaging, every step is monitored for safety, sustainability, and efficacy.</p>
-          <ul class="process-steps">
-            <li class="process-step">
-              <div class="step-icon">1</div>
-              <span>Locally Sourced Ingredients</span>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">2</div>
-              <span>Batch Testing & Quality Assurance</span>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">3</div>
-              <span>Eco-Friendly Packaging</span>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">4</div>
-              <span>Nationwide Distribution</span>
-            </li>
-          </ul>
+        <div class="card card--raise reveal reveal--scale" data-delay="1">
+          <div class="icon-badge icon-badge--round icon-badge--gold"><i class="fas fa-seedling" aria-hidden="true"></i></div>
+          <h3 class="h3">Recycling education</h3>
+          <p>Schools programmes on separating waste at source, using the packaging our own products come in.</p>
+        </div>
+        <div class="card card--raise reveal reveal--scale" data-delay="2">
+          <div class="icon-badge icon-badge--round"><i class="fas fa-hand-holding-heart" aria-hidden="true"></i></div>
+          <h3 class="h3">Local supplier preference</h3>
+          <p>Where quality and timing allow, we buy from South African-owned small and medium suppliers.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- COMMUNITY INITIATIVES -->
-  <section class="community-section" role="region" aria-labelledby="community-heading">
-    <div class="container">
-      <h2 id="community-heading" class="section-title">Community Impact</h2>
-      <div class="initiative-grid">
-        <div class="initiative-card" role="article">
-          <div class="initiative-icon" aria-hidden="true"><i class="fas fa-tint"></i></div>
-          <h3>Clean Water Access</h3>
-          <p>10% of profits fund water infrastructure projects in underserved KZN communities.</p>
-        </div>
-        <div class="initiative-card" role="article">
-          <div class="initiative-icon" aria-hidden="true"><i class="fas fa-seedling"></i></div>
-          <h3>Recycling Education</h3>
-          <p>Free workshops in schools teaching children about waste reduction and recycling.</p>
-        </div>
-        <div class="initiative-card" role="article">
-          <div class="initiative-icon" aria-hidden="true"><i class="fas fa-hand-holding-heart"></i></div>
-          <h3>Local Supplier Program</h3>
-          <p>Over 80% of our supply chain partners are South African-owned SMEs.</p>
-        </div>
+  <!-- ══ CTA ══ -->
+  <section class="cta-band">
+    <div class="shell">
+      <span class="eyebrow eyebrow--on-dark">Work with us</span>
+      <h2 class="h2">Let's talk <em>supply.</em></h2>
+      <p>Whether you run a single store or a national account, we will put together a range and a delivery plan that fits.</p>
+      <div class="cta-band__btns">
+        <a class="btn btn--gold" href="../contact/"><i class="fas fa-handshake" aria-hidden="true"></i> Start a conversation</a>
+        <a class="btn btn--ghost-light" href="../product/">See the range <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <a href="/home/">
-            <img src="../logo.jpeg" alt="RAHA Logo" />
-          </a>
+</main>
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../logo.jpeg" alt="RAHA" width="150" height="40">
+        <p>Everyday essentials for South African homes and businesses — packed with care and delivered nationwide, as singles, multipacks and full trade cases.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/Raha_brands" target="_blank" rel="noopener" aria-label="RAHA on Instagram (@Raha_brands)"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://wa.me/27325431234" target="_blank" rel="noopener" aria-label="RAHA on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
         </div>
-        <p>© 2026 RAHA Brands (Pty) Ltd. All rights reserved.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.7;">
-        </p>
+      </div>
+
+      <div>
+        <h4>Products</h4>
+        <ul>
+          <li><a href="../product/">Still spring water</a></li>
+          <li><a href="../product/">Sparkling spring water</a></li>
+          <li><a href="../product/">Baked beans</a></li>
+          <li><a href="../product/">Refuse bags &amp; bags on a roll</a></li>
+          <li><a href="../product/">Jumbo kitchen towels</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../home/">Home</a></li>
+          <li><a href="../about/">Our story</a></li>
+          <li><a href="../contact/">Contact us</a></li>
+          <li><a href="../contact/#trade">Trade enquiries</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Get in touch</h4>
+        <ul>
+          <li class="contact-line"><i class="fas fa-location-dot" aria-hidden="true"></i><span>17 Smithers Road,<br>Stanger, KZN 4450</span></li>
+          <li class="contact-line"><i class="fas fa-phone" aria-hidden="true"></i><a href="tel:+27325431234">+27 32 543 1234</a></li>
+          <li class="contact-line"><i class="fas fa-envelope" aria-hidden="true"></i><a href="mailto:info@raha.co.za">info@raha.co.za</a></li>
+          <li class="contact-line"><i class="fas fa-clock" aria-hidden="true"></i><span>Mon–Fri, 08:00–17:00 SAST</span></li>
+        </ul>
       </div>
     </div>
-  </footer>
 
-  <!-- SCRIPTS -->
-  <script>
-    // Header scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
+    <div class="site-footer__bar">
+      <p>&copy; <span data-year>2026</span> RAHA Brands (Pty) Ltd. All rights reserved.</p>
+      <ul>
+        <li><a href="#">Privacy policy</a></li>
+        <li><a href="#">Terms of use</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
 
-    // Mobile nav toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    const overlay = document.getElementById('navOverlay');
-    const body = document.body;
+<div class="fab-stack">
+  <button type="button" class="fab fab--top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
+  <a class="fab fab--wa" href="https://wa.me/27325431234" target="_blank" rel="noopener" aria-label="Chat with RAHA on WhatsApp"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+</div>
 
-    function toggleMenu() {
-      const isActive = hamburger.classList.contains('active');
-      hamburger.classList.toggle('active', !isActive);
-      mobileNav.classList.toggle('active', !isActive);
-      overlay.style.display = !isActive ? 'block' : 'none';
-      body.style.overflow = !isActive ? 'hidden' : '';
-      hamburger.setAttribute('aria-expanded', !isActive);
-    }
-
-    hamburger.addEventListener('click', toggleMenu);
-    overlay.addEventListener('click', toggleMenu);
-
-    document.querySelectorAll('.mobile-nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-        overlay.style.display = 'none';
-        body.style.overflow = '';
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // Logo click
-    document.querySelector('.logo a').addEventListener('click', e => {
-      e.preventDefault();
-      window.location.href = '/home/';
-    });
-
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
+<script src="../assets/js/raha.js" defer></script>
+<script src="../assets/js/motion.js" defer></script>
 </body>
 </html>

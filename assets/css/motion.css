@@ -1,0 +1,406 @@
+/* ==========================================================================
+   RAHA — motion & depth layer
+   Loaded after raha.css. Everything here is additive: remove this one file
+   and the site still works, it just stops moving.
+
+   Depth model
+   -----------
+   Grids own the `perspective`; cards rotate inside it. Cards that clip with
+   `overflow: hidden` are forced to `transform-style: flat` by the spec, so
+   those get whole-element rotation only. Cards that do not clip (`.card`)
+   use `preserve-3d` and lift their contents on the Z axis.
+   ========================================================================== */
+
+:root {
+  --tilt-max: 7deg;
+  --depth-ease: cubic-bezier(.2, .8, .2, 1);
+  --spring: cubic-bezier(.34, 1.56, .64, 1);
+}
+
+/* --------------------------------------------------------------------------
+   1. Scroll progress
+   -------------------------------------------------------------------------- */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; z-index: 1300;
+  width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--gold-500), var(--navy-500) 55%, var(--gold-400));
+  transform: scaleX(var(--progress, 0));
+  transform-origin: 0 50%;
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reveal variants
+   -------------------------------------------------------------------------- */
+.reveal { transition-property: opacity, transform, filter; }
+
+.reveal--left  { transform: translate3d(-30px, 0, 0); }
+.reveal--right { transform: translate3d(30px, 0, 0); }
+.reveal--scale { transform: scale(.93); }
+.reveal--blur  { transform: translate3d(0, 14px, 0); filter: blur(9px); }
+.reveal--flip {
+  transform: perspective(1100px) rotateX(-18deg) translate3d(0, 26px, 0);
+  transform-origin: 50% 100%;
+}
+.reveal.is-visible { transform: none; filter: none; }
+
+.reveal[data-delay="5"] { transition-delay: .40s; }
+.reveal[data-delay="6"] { transition-delay: .48s; }
+
+@keyframes rahaRise {
+  from { opacity: 0; transform: translate3d(0, 16px, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   3. Pointer-tracked 3D tilt
+   `.tilt` is applied by motion.js, so devices without a fine pointer and
+   users who prefer reduced motion keep the plain hover styles from raha.css.
+   -------------------------------------------------------------------------- */
+.product-grid, .cat-grid, .grid { perspective: 1500px; perspective-origin: 50% 30%; }
+
+.p-card.tilt,
+.cat-tile.tilt,
+.card.tilt,
+.split__media.tilt {
+  position: relative;   /* the ::after sheen anchors to this */
+  --rx: 0deg; --ry: 0deg; --lift: 0px; --pop: 1;
+  transform:
+    translate3d(0, var(--lift), 0)
+    rotateX(var(--rx))
+    rotateY(var(--ry))
+    scale(var(--pop));
+  transition: transform .5s var(--depth-ease),
+              box-shadow .5s var(--depth-ease),
+              border-color .3s var(--ease);
+}
+
+/* Hover only moves custom properties, so it never clobbers the transform. */
+.p-card.tilt:hover,
+.cat-tile.tilt:hover,
+.card.tilt:hover,
+.split__media.tilt:hover { --lift: -9px; --pop: 1.014; }
+
+/* While the pointer is being tracked the transform must follow it instantly. */
+.tilt.is-tracking {
+  transition: box-shadow .3s var(--ease), border-color .3s var(--ease);
+  will-change: transform;
+}
+
+/* Specular wash that follows the cursor across the card. */
+.p-card.tilt::after,
+.cat-tile.tilt::after,
+.card.tilt::after {
+  content: '';
+  position: absolute; inset: 0; z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    460px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(36, 99, 171, .11),
+    rgba(36, 99, 171, 0) 58%);
+  opacity: 0;
+  transition: opacity .45s var(--ease);
+}
+.p-card.tilt:hover::after,
+.cat-tile.tilt:hover::after,
+.card.tilt:hover::after { opacity: 1; }
+
+/* Cards that do not clip can lift their contents off the surface. */
+.card.tilt { transform-style: preserve-3d; perspective: 900px; }
+.card.tilt > * { transform: translateZ(0); transition: transform .5s var(--depth-ease); }
+.card.tilt:hover > .icon-badge { transform: translateZ(30px) rotateY(-16deg) rotateX(9deg) scale(1.07); }
+.card.tilt:hover > h3,
+.card.tilt:hover > .h3 { transform: translateZ(18px); }
+.card.tilt:hover > p { transform: translateZ(9px); }
+
+/* --------------------------------------------------------------------------
+   4. Product media
+   -------------------------------------------------------------------------- */
+.p-card:hover .p-card__media img { animation: rahaBob 3.2s ease-in-out infinite; }
+
+@keyframes rahaBob {
+  0%, 100% { transform: scale(1.06) translate3d(0, 0, 0); }
+  50%      { transform: scale(1.06) translate3d(0, -8px, 0); }
+}
+
+/* Badge settles in with a little overshoot. */
+.p-card__flag { animation: rahaPop .55s var(--spring) backwards; animation-delay: .35s; }
+
+@keyframes rahaPop {
+  from { opacity: 0; transform: scale(.7) translate3d(-6px, -6px, 0); }
+}
+
+/* `.p-card` clips, so it is flattened — this is a scale, not real Z depth. */
+.p-card__zoom { transition: opacity var(--t-base), transform var(--t-base), background-color var(--t-fast); }
+.p-card:hover .p-card__zoom { transform: translateY(0) scale(1.08); }
+
+/* --------------------------------------------------------------------------
+   5. Buttons
+   -------------------------------------------------------------------------- */
+.btn { position: relative; overflow: hidden; }
+.btn:active { transform: translateY(0) scale(.972); }
+
+/* Light sweeps across on hover. */
+.btn::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0; left: -140%;
+  width: 55%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .38), transparent);
+  transform: skewX(-20deg);
+  pointer-events: none;
+}
+.btn:hover::after { animation: rahaSheen .75s var(--ease-out); }
+
+/* The gold call-to-action catches the light on its own. */
+.btn--gold::after { animation: rahaSheen 5s var(--ease-out) infinite; }
+
+@keyframes rahaSheen {
+  from { left: -140%; }
+  to   { left: 160%; }
+}
+
+[data-magnetic] {
+  --mag-x: 0px; --mag-y: 0px;
+  transform: translate3d(var(--mag-x), var(--mag-y), 0);
+  transition: transform .4s var(--depth-ease);
+}
+[data-magnetic].is-tracking { transition: none; }
+[data-magnetic]:active { transform: translate3d(var(--mag-x), var(--mag-y), 0) scale(.97); }
+
+/* --------------------------------------------------------------------------
+   6. Hero
+   -------------------------------------------------------------------------- */
+.hero__slides { transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.04); will-change: transform; }
+
+/* Slow-drifting light, layered above the photo and below the copy. */
+.hero::after {
+  content: '';
+  position: absolute; inset: -20%; z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 46% at 22% 28%, rgba(217, 169, 58, .22), transparent 65%),
+    radial-gradient(42% 48% at 78% 72%, rgba(36, 99, 171, .30), transparent 68%);
+  animation: rahaDrift 22s ease-in-out infinite alternate;
+}
+
+@keyframes rahaDrift {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to   { transform: translate3d(4%, 3%, 0) scale(1.12); }
+}
+
+.hero__inner > * { animation: rahaHeroIn .95s var(--ease-out) backwards; }
+.hero__inner > *:nth-child(1) { animation-delay: .10s; }
+.hero__inner > *:nth-child(2) { animation-delay: .20s; }
+.hero__inner > *:nth-child(3) { animation-delay: .30s; }
+.hero__inner > *:nth-child(4) { animation-delay: .40s; }
+.hero__inner > *:nth-child(5) { animation-delay: .50s; }
+
+@keyframes rahaHeroIn {
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateX(-14deg) translate3d(0, 30px, 0);
+    transform-origin: 50% 100%;
+  }
+}
+
+.hero h1 em { position: relative; display: inline-block; }
+.hero h1 em::after {
+  content: '';
+  position: absolute; left: 0; right: 0; bottom: .06em;
+  height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--gold-500), transparent);
+  transform: scaleX(0); transform-origin: 0 50%;
+  animation: rahaUnderline .9s var(--ease-out) 1.1s forwards;
+}
+
+@keyframes rahaUnderline { to { transform: scaleX(1); } }
+
+.hero__dot { transition: background-color var(--t-base), width var(--t-base), transform var(--t-base); }
+.hero__dot:hover { transform: scaleY(1.8); }
+
+/* --------------------------------------------------------------------------
+   7. Header & navigation
+   -------------------------------------------------------------------------- */
+.brand img { transition: transform .45s var(--spring); }
+.brand:hover img { transform: scale(1.05) rotate(-1.5deg); }
+
+.nav__link { transform-style: preserve-3d; transition: color var(--t-fast), transform var(--t-base); }
+.nav__link:hover { transform: translateY(-2px); }
+
+.mobile-nav.is-open .mobile-nav__link { animation: rahaSlideIn .45s var(--ease-out) backwards; }
+.mobile-nav.is-open .mobile-nav__link:nth-child(1) { animation-delay: .05s; }
+.mobile-nav.is-open .mobile-nav__link:nth-child(2) { animation-delay: .10s; }
+.mobile-nav.is-open .mobile-nav__link:nth-child(3) { animation-delay: .15s; }
+.mobile-nav.is-open .mobile-nav__link:nth-child(4) { animation-delay: .20s; }
+
+@keyframes rahaSlideIn {
+  from { opacity: 0; transform: translate3d(-18px, 0, 0); }
+}
+
+/* --------------------------------------------------------------------------
+   8. Catalogue controls
+   -------------------------------------------------------------------------- */
+.filter { transition: all var(--t-fast), transform .25s var(--spring); }
+.filter[aria-pressed="true"] { transform: translateY(-2px); }
+/* Listed last so the press wins over the selected state. */
+.filter:active, .filter[aria-pressed="true"]:active { transform: scale(.94); }
+
+.search input { transition: border-color var(--t-fast), background-color var(--t-fast), box-shadow var(--t-fast), transform .3s var(--ease); }
+.search input:focus { transform: scale(1.015); }
+
+.basket-btn__count.is-on { animation: rahaBadge .5s var(--spring); }
+
+@keyframes rahaBadge {
+  0%   { transform: scale(0) rotate(-25deg); }
+  60%  { transform: scale(1.35) rotate(6deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* --------------------------------------------------------------------------
+   9. Overlays — modal, drawer, toast
+   -------------------------------------------------------------------------- */
+.modal { perspective: 1600px; }
+.modal__panel {
+  transform: rotateX(-11deg) translate3d(0, 34px, 0) scale(.95);
+  transform-origin: 50% 0;
+  transition: transform .55s var(--depth-ease), opacity .35s var(--ease);
+}
+.modal.is-open .modal__panel { transform: none; }
+
+.modal.is-open .modal__body > * { animation: rahaRise .55s var(--ease-out) backwards; }
+.modal.is-open .modal__body > *:nth-child(1) { animation-delay: .14s; }
+.modal.is-open .modal__body > *:nth-child(2) { animation-delay: .20s; }
+.modal.is-open .modal__body > *:nth-child(3) { animation-delay: .26s; }
+.modal.is-open .modal__body > *:nth-child(4) { animation-delay: .32s; }
+.modal.is-open .modal__body > *:nth-child(n+5) { animation-delay: .38s; }
+
+.drawer {
+  transform: perspective(1400px) translate3d(105%, 0, 0) rotateY(-14deg);
+  transform-origin: 100% 50%;
+}
+.drawer.is-open { transform: perspective(1400px) translate3d(0, 0, 0) rotateY(0deg); }
+
+.drawer.is-open .line-item { animation: rahaSlideIn .45s var(--ease-out) backwards; }
+.drawer.is-open .line-item:nth-child(1) { animation-delay: .04s; }
+.drawer.is-open .line-item:nth-child(2) { animation-delay: .10s; }
+.drawer.is-open .line-item:nth-child(3) { animation-delay: .16s; }
+.drawer.is-open .line-item:nth-child(n+4) { animation-delay: .22s; }
+
+.qty button { transition: transform .2s var(--spring), color var(--t-fast), background-color var(--t-fast); }
+.qty button:active { transform: scale(.82); }
+
+.toast.is-on { animation: rahaToast .5s var(--spring); }
+
+@keyframes rahaToast {
+  from { transform: translate(-50%, 140%) rotateX(-40deg); }
+}
+
+/* --------------------------------------------------------------------------
+   10. Stats, trust, quotes, FAQ
+   -------------------------------------------------------------------------- */
+.stat-row { perspective: 1200px; }
+.stat-row.is-visible .stat { animation: rahaFlipIn .75s var(--ease-out) backwards; }
+.stat-row.is-visible .stat:nth-child(1) { animation-delay: .05s; }
+.stat-row.is-visible .stat:nth-child(2) { animation-delay: .15s; }
+.stat-row.is-visible .stat:nth-child(3) { animation-delay: .25s; }
+.stat-row.is-visible .stat:nth-child(4) { animation-delay: .35s; }
+
+@keyframes rahaFlipIn {
+  from { opacity: 0; transform: rotateX(-40deg) translate3d(0, 18px, 0); transform-origin: 50% 100%; }
+}
+
+.trust { transition: transform .4s var(--depth-ease); }
+.trust:hover { transform: translateX(6px); }
+.trust__icon { transition: transform .5s var(--spring); }
+.trust:hover .trust__icon { transform: rotateY(180deg); }
+
+.quote-card .stars i { animation: rahaStar .5s var(--spring) backwards; }
+.quote-card .stars i:nth-child(1) { animation-delay: .05s; }
+.quote-card .stars i:nth-child(2) { animation-delay: .11s; }
+.quote-card .stars i:nth-child(3) { animation-delay: .17s; }
+.quote-card .stars i:nth-child(4) { animation-delay: .23s; }
+.quote-card .stars i:nth-child(5) { animation-delay: .29s; }
+
+@keyframes rahaStar {
+  from { opacity: 0; transform: scale(.2) rotate(-90deg); }
+}
+
+.avatar { transition: transform .5s var(--spring); }
+.quote-card:hover .avatar { transform: rotateY(360deg); }
+
+.faq-item { transition: border-color var(--t-base), box-shadow var(--t-base); }
+.faq-item[open] { border-color: rgba(18, 59, 114, .22); box-shadow: var(--shadow-sm); }
+.faq-item[open] p { animation: rahaRise .4s var(--ease-out); }
+.faq-item summary { transition: background-color var(--t-fast); }
+.faq-item summary:hover { background: var(--surface-2); }
+
+/* --------------------------------------------------------------------------
+   11. Footer & floating actions
+   -------------------------------------------------------------------------- */
+.socials a { transform-style: preserve-3d; transition: transform .6s var(--depth-ease), background-color var(--t-base), border-color var(--t-base), color var(--t-base); }
+.socials a:hover { transform: translateY(-4px) rotateX(360deg); }
+
+.site-footer a:not(.socials a) { transition: color var(--t-fast), transform var(--t-fast); }
+
+.fab--wa { position: relative; }
+.fab--wa::before {
+  content: '';
+  position: absolute; inset: 0; z-index: -1;
+  border-radius: inherit; background: #25d366;
+  animation: rahaPing 2.8s ease-out infinite;
+}
+
+@keyframes rahaPing {
+  0%   { transform: scale(1); opacity: .55; }
+  70%  { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.fab--top { transition: opacity var(--t-base), transform .45s var(--spring), box-shadow var(--t-base); }
+.fab--top:hover { transform: translateY(-4px) scale(1.08); }
+
+/* --------------------------------------------------------------------------
+   12. Section furniture
+   -------------------------------------------------------------------------- */
+.eyebrow { transition: transform .4s var(--spring); }
+.section-head:hover .eyebrow { transform: translateY(-2px) scale(1.03); }
+
+.split__badge { animation: rahaFloat 5.5s ease-in-out infinite; }
+
+@keyframes rahaFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(0, -9px, 0); }
+}
+
+.cta-band::before { animation: rahaBreathe 9s ease-in-out infinite; }
+
+@keyframes rahaBreathe {
+  0%, 100% { opacity: 1; letter-spacing: -.06em; }
+  50%      { opacity: .55; letter-spacing: -.04em; }
+}
+
+.icon-badge { transition: transform .5s var(--depth-ease); }
+.feature-card__index { transition: transform .6s var(--depth-ease), color var(--t-base); }
+.card:hover .feature-card__index { transform: translate3d(-6px, 4px, 0) scale(1.08); color: rgba(18, 59, 114, .09); }
+
+.link-arrow, .cat-tile__body span { transition: gap var(--t-base), color var(--t-base); }
+
+/* --------------------------------------------------------------------------
+   13. Reduced motion — hard stop
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .p-card.tilt, .cat-tile.tilt, .card.tilt, .split__media.tilt,
+  [data-magnetic] { transform: none !important; }
+
+  .hero::after,
+  .split__badge,
+  .cta-band::before,
+  .fab--wa::before,
+  .btn--gold::after,
+  .p-card:hover .p-card__media img { animation: none !important; }
+
+  .hero__slides { transform: none !important; }
+  .scroll-progress { display: none; }
+  .reveal--blur { filter: none; }
+}

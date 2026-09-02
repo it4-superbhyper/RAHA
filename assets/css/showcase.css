@@ -1,0 +1,246 @@
+/* ==========================================================================
+   RAHA — 3D product showcase
+   A real perspective stage: products sit on a lit floor in 3D space, the
+   camera orbits with the pointer, and the carousel rotates through depth.
+
+   Geometry is driven by two custom properties per item, written by
+   showcase.js: `--o` (signed offset from centre) and `--ao` (its absolute
+   value). Every transform, blur, shadow and fade is derived from those, so
+   the whole rig is one formula rather than nine hard-coded positions.
+   ========================================================================== */
+
+/* A white studio stage, deliberately.
+   The product photography is shot on solid white, and a 3D-transformed item
+   creates its own stacking context — so `mix-blend-mode` could only blend
+   against the item's own (empty) group, never against the section behind it.
+   Tinting the backdrop would therefore show each JPEG as a white rectangle.
+   Depth comes from cast shadows and reflections instead, and the vignette is
+   an inset shadow hugging the top and bottom edges, far from any image. */
+.showcase {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+  background: #fff;
+  box-shadow:
+    inset 0 62px 58px -60px rgba(18, 59, 114, .10),
+    inset 0 -86px 72px -62px rgba(18, 59, 114, .13);
+}
+
+.showcase__inner { position: relative; z-index: 2; }
+
+/* --------------------------------------------------------------------------
+   Stage
+   -------------------------------------------------------------------------- */
+.sc-stage {
+  --item-w: clamp(168px, 23vw, 290px);
+  --spread: calc(var(--item-w) * .74);
+  --cam-x: 0deg;
+  --cam-y: 0deg;
+
+  position: relative;
+  height: clamp(340px, 44vw, 500px);
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  perspective: 1500px;
+  perspective-origin: 50% 42%;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.sc-stage.is-dragging { cursor: grabbing; }
+
+.sc-track {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--cam-x)) rotateY(var(--cam-y));
+  transition: transform .6s var(--depth-ease);
+}
+.sc-stage.is-tracking .sc-track { transition: none; }
+
+/* --------------------------------------------------------------------------
+   Items — one formula, nine positions
+   -------------------------------------------------------------------------- */
+.sc-item {
+  --o: 0;
+  --ao: 0;
+
+  position: absolute;
+  top: 0; left: 50%;
+  width: var(--item-w);
+  height: 100%;
+  margin: 0;
+  margin-left: calc(var(--item-w) / -2);
+  transform-style: preserve-3d;
+  transform:
+    translateX(calc(var(--o) * var(--spread)))
+    translateZ(calc(var(--ao) * -200px))
+    rotateY(calc(var(--o) * -32deg))
+    scale(calc(1 - var(--ao) * .05));
+  opacity: calc(1 - var(--ao) * .26);
+  filter: blur(calc(var(--ao) * .7px)) saturate(calc(1 - var(--ao) * .18));
+  transition:
+    transform .85s var(--depth-ease),
+    opacity .7s var(--ease),
+    filter .7s var(--ease);
+  will-change: transform;
+}
+
+/* Anything more than three deep is out of frame. */
+.sc-item.is-far { opacity: 0; pointer-events: none; }
+
+.sc-item__plate {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
+}
+
+.sc-item__plate img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+}
+
+/* Contact shadow: tightest and darkest under the focused item. */
+.sc-item__shadow {
+  position: absolute;
+  left: 50%; bottom: -2%;
+  width: calc(62% - var(--ao) * 4%);
+  height: 26px;
+  transform: translateX(-50%) translateZ(-1px);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(11, 42, 86, .38), rgba(11, 42, 86, 0) 78%);
+  filter: blur(calc(5px + var(--ao) * 4px));
+  opacity: calc(.85 - var(--ao) * .2);
+  pointer-events: none;
+}
+
+/* Mirrored copy on the floor. */
+.sc-item__reflect {
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  height: 58%;
+  display: grid;
+  place-items: start center;
+  overflow: hidden;
+  opacity: .2;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, .85), transparent 72%);
+          mask-image: linear-gradient(180deg, rgba(0, 0, 0, .85), transparent 72%);
+}
+/* On a white ground the photo's white background reads as nothing at low
+   opacity, so only the product itself ghosts onto the floor. */
+.sc-item__reflect img {
+  max-width: 100%;
+  width: auto;
+  transform: scaleY(-1);
+  transform-origin: top center;
+  filter: blur(1px);
+}
+
+/* --------------------------------------------------------------------------
+   Captions — outside the 3D space so type stays flat and legible
+   -------------------------------------------------------------------------- */
+.sc-captions {
+  position: relative;
+  min-height: 8.5rem;
+  margin-top: clamp(1rem, 2.5vw, 1.75rem);
+  text-align: center;
+}
+
+.sc-caption {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .5s var(--ease-out), transform .5s var(--ease-out);
+  pointer-events: none;
+}
+.sc-caption.is-active { opacity: 1; transform: none; pointer-events: auto; }
+
+.sc-caption__cat {
+  font-size: .68rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold-600);
+}
+.sc-caption h3 { font-size: clamp(1.15rem, 2vw, 1.5rem); margin: .5rem 0 .3rem; }
+.sc-caption p { font-size: .88rem; color: var(--muted); margin: 0 0 .9rem; }
+
+/* --------------------------------------------------------------------------
+   Controls
+   -------------------------------------------------------------------------- */
+.sc-controls {
+  display: flex; align-items: center; justify-content: center;
+  gap: 1rem; margin-top: .5rem;
+}
+
+.sc-arrow {
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border-radius: var(--r-pill);
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--navy-700);
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s var(--spring), background-color var(--t-fast), color var(--t-fast), box-shadow var(--t-base);
+}
+.sc-arrow:hover {
+  background: var(--navy-700); color: #fff;
+  border-color: var(--navy-700);
+  transform: translateY(-3px); box-shadow: var(--shadow-md);
+}
+.sc-arrow:active { transform: scale(.92); }
+
+.sc-dots { display: flex; gap: .4rem; }
+.sc-dot {
+  width: 8px; height: 8px; border-radius: var(--r-pill);
+  background: rgba(18, 59, 114, .2);
+  transition: all .35s var(--spring);
+}
+.sc-dot:hover { background: rgba(18, 59, 114, .4); }
+.sc-dot[aria-current="true"] { width: 26px; background: var(--gold-500); }
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .sc-stage { height: clamp(280px, 62vw, 360px); perspective: 1100px; }
+  .sc-item { transform:
+    translateX(calc(var(--o) * var(--spread)))
+    translateZ(calc(var(--ao) * -130px))
+    rotateY(calc(var(--o) * -26deg))
+    scale(calc(1 - var(--ao) * .07)); }
+  .sc-captions { min-height: 9.5rem; }
+}
+
+/* --------------------------------------------------------------------------
+   Reduced motion — collapse the rig to a flat scroll-snap rail
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .sc-stage {
+    height: auto;
+    perspective: none;
+    display: block;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    cursor: default;
+  }
+  .sc-track {
+    position: static;
+    transform: none;
+    display: flex;
+    gap: 1rem;
+  }
+  .sc-item {
+    position: static;
+    margin: 0;
+    flex: 0 0 var(--item-w);
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+    scroll-snap-align: center;
+  }
+  .sc-item__reflect, .sc-item__shadow { display: none; }
+  .sc-captions { min-height: 0; display: grid; gap: 1.5rem; }
+  .sc-caption { position: static; opacity: 1; transform: none; }
+  .sc-controls { display: none; }
+}
