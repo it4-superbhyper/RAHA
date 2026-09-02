@@ -795,38 +795,23 @@ p { text-wrap: pretty; }
    -------------------------------------------------------------------------- */
 .hero {
   position: relative; isolation: isolate;
-  min-height: clamp(560px, 82vh, 780px);
+  min-height: clamp(500px, 68vh, 660px);
   display: flex; align-items: center;
   background: var(--navy-900);
   overflow: hidden;
 }
-.hero__slides { position: absolute; inset: 0; z-index: -2; }
-.hero__slide {
-  position: absolute; inset: 0;
-  background-size: cover; background-position: center;
-  opacity: 0; transform: scale(1.06);
-  transition: opacity 1.4s var(--ease-out), transform 8s linear;
-}
-.hero__slide.is-active { opacity: 1; transform: scale(1); }
+/* Clean gradient backdrop — no stock photography, just a diagonal navy wash
+   with the drifting radial glow defined in motion.css (.hero::after). */
 .hero::before {
   content: ''; position: absolute; inset: 0; z-index: -1;
-  background:
-    linear-gradient(100deg, rgba(7, 32, 63, .95) 0%, rgba(11, 42, 86, .86) 42%, rgba(18, 59, 114, .55) 100%);
+  background: linear-gradient(115deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
 }
 
-.hero__inner { padding-block: clamp(4rem, 10vw, 7rem); max-width: 680px; }
-.hero h1 { color: #fff; margin: 1.25rem 0 1.15rem; }
+.hero__inner { padding-block: clamp(3.5rem, 9vw, 6rem); max-width: 640px; }
+.hero h1 { color: #fff; margin: 0 0 1.25rem; }
 .hero h1 em { font-style: normal; color: var(--gold-500); }
-.hero p { color: rgba(255, 255, 255, .78); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 52ch; }
-.hero__cta { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2rem; }
-
-.hero__dots { display: flex; gap: .4rem; margin-top: 2.5rem; }
-.hero__dot {
-  width: 26px; height: 4px; border-radius: 2px;
-  background: rgba(255, 255, 255, .25);
-  transition: background-color var(--t-base), width var(--t-base);
-}
-.hero__dot[aria-selected="true"] { background: var(--gold-500); width: 44px; }
+.hero p { color: rgba(255, 255, 255, .78); font-size: clamp(1rem, 1.4vw, 1.15rem); max-width: 48ch; }
+.hero__cta { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2.25rem; }
 
 .marquee {
   background: var(--navy-800);

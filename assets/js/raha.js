@@ -117,39 +117,6 @@
     }
   }
 
-  /* ---- Hero slideshow ----------------------------------------------------- */
-  var heroSlides = document.querySelectorAll('.hero__slide');
-  var heroDots = document.querySelectorAll('.hero__dot');
-
-  if (heroSlides.length > 1) {
-    var index = 0;
-    var timer = null;
-
-    function show(next) {
-      index = (next + heroSlides.length) % heroSlides.length;
-      heroSlides.forEach(function (slide, i) {
-        slide.classList.toggle('is-active', i === index);
-      });
-      heroDots.forEach(function (dot, i) {
-        dot.setAttribute('aria-selected', String(i === index));
-      });
-    }
-    function play() {
-      if (reduceMotion) return;
-      stop();
-      timer = window.setInterval(function () { show(index + 1); }, 6500);
-    }
-    function stop() { if (timer) window.clearInterval(timer); }
-
-    heroDots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () { show(i); play(); });
-    });
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) stop(); else play();
-    });
-    play();
-  }
-
   /* ---- Footer year -------------------------------------------------------- */
   document.querySelectorAll('[data-year]').forEach(function (el) {
     el.textContent = String(new Date().getFullYear());

@@ -43,30 +43,6 @@
     update();
   })();
 
-  /* ---- Hero parallax ------------------------------------------------------ */
-  (function heroParallax() {
-    var slides = document.querySelector('.hero__slides');
-    var hero = document.querySelector('.hero');
-    if (!slides || !hero || !wantsMotion()) return;
-
-    var ticking = false;
-    function update() {
-      var height = hero.offsetHeight;
-      // Only worth computing while the hero is still on screen.
-      var shift = Math.min(window.scrollY, height) * 0.28;
-      slides.style.setProperty('--hero-shift', shift.toFixed(1) + 'px');
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(update);
-    }, { passive: true });
-
-    update();
-  })();
-
   /* ---- 3D tilt ------------------------------------------------------------ */
   (function tilt() {
     if (!wantsMotion() || !hasFinePointer()) return;

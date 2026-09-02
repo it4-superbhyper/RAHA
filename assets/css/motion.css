@@ -171,9 +171,8 @@
 /* --------------------------------------------------------------------------
    6. Hero
    -------------------------------------------------------------------------- */
-.hero__slides { transform: translate3d(0, var(--hero-shift, 0px), 0) scale(1.04); will-change: transform; }
 
-/* Slow-drifting light, layered above the photo and below the copy. */
+/* Slow-drifting light, layered above the gradient and below the copy. */
 .hero::after {
   content: '';
   position: absolute; inset: -20%; z-index: -1;
@@ -215,9 +214,6 @@
 }
 
 @keyframes rahaUnderline { to { transform: scaleX(1); } }
-
-.hero__dot { transition: background-color var(--t-base), width var(--t-base), transform var(--t-base); }
-.hero__dot:hover { transform: scaleY(1.8); }
 
 /* --------------------------------------------------------------------------
    7. Header & navigation
@@ -400,7 +396,6 @@
   .btn--gold::after,
   .p-card:hover .p-card__media img { animation: none !important; }
 
-  .hero__slides { transform: none !important; }
   .scroll-progress { display: none; }
   .reveal--blur { filter: none; }
 }
